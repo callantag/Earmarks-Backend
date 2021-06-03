@@ -8,6 +8,7 @@ const EntrySchema = new mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category",
+        required: true,
     },
     amount: {
         type: Number,
@@ -20,6 +21,7 @@ const EntrySchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required: true,
     },
 });
 

@@ -5,24 +5,15 @@ const CategorySchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	user: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: "User",
+	description: {
+		type: String,
 		required: true,
 	},
-	entries: [
+	entry: [
 		{
 			entryId: {
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "Entry",
-				required: true,
-			},
-			amount: {
-				type: Number,
-				required: true,
-			},
-			income: {
-				type: Boolean,
 				required: true,
 			},
 		},
