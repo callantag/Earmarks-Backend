@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "86a7f5db-1482-42b1-8c25-f6ea703ad496",
+		"name": "Earmarks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register (Guest)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\" : \"Fname2\",\r\n    \"lastName\" : \"Lname2\",\r\n    \"email\" : \"user2@email.com\",\r\n    \"password\" : \"test1234\",\r\n    \"confirmPassword\" : \"test1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/users/register",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login (User/Admin)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"user2@email.com\",\r\n    \"password\" : \"test1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/users/login",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Budget Entry (User)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"description\": \"Entry 3\",\r\n\t\"amount\": 1,\r\n    \"category\": \"60b859db0a506110c8b04b93\",\r\n\t\"income\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/entries",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"entries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Exp&Inc (User)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/entries/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"entries",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Entry (User)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"description\": \"Budget Entry 1b\",\r\n        \"amount\": 250,\r\n        \"category\": \"60b859db0a506110c8b04b93\",\r\n        \"income\": true\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/entries/60b88d1dfa8d3a2924f5afe1",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"entries",
+						"60b88d1dfa8d3a2924f5afe1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete One Entry (User)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/entries/60b88d1dfa8d3a2924f5afe1",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"entries",
+						"60b88d1dfa8d3a2924f5afe1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Entries (User)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/api/entries",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"entries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Category (User)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Home\",\r\n    \"description\": \"New category blah\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/categories",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Category (User)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/categories",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Category (User)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Homey\",\r\n    \"description\": \"New category blah blah\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/categories/60b859db0a506110c8b04b93",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"categories",
+						"60b859db0a506110c8b04b93"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Category (User)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/categories/60b859db0a506110c8b04b93",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"categories",
+						"60b859db0a506110c8b04b93"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Categories (User)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{normalUser}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/api/categories",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One User Entries (Admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Chuckie\",\r\n    \"price\" : 10,\r\n    \"description\" : \"Lasang yakult\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/budget/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"budget",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One User Expenses (Admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Chuckie\",\r\n    \"price\" : 10,\r\n    \"description\" : \"Lasang yakult\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/products/60af51f378530a437438db09",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"60af51f378530a437438db09"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One User Incomes (Admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Chuckie\",\r\n    \"price\" : 10,\r\n    \"description\" : \"Lasang yakult\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/api/products/60af51f378530a437438db09",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"60af51f378530a437438db09"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "https://earmarks-backend.herokuapp.com/"
+		},
+		{
+			"key": "normalUser",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGI4OGM5OGZhOGQzYTI5MjRmNWFmZGUiLCJpYXQiOjE2MjI3MDczNjF9.zvKqJdzLftpf90jU4yvXedvtijNHDYT-4lWJBLjotFw"
+		},
+		{
+			"key": "adminUser",
+			"value": ""
+		}
+	]
+}

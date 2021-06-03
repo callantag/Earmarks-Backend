@@ -1,6 +1,15 @@
 const router = require("express").Router();
 const Entry = require("./../models/Entry");
-const { verifyUser } = require("./../utils");
+const { verifyUser, verifyAdmin } = require("./../utils");
+
+// Get all Entry as admin
+router.get("/all", verifyAdmin, (req, res, next) => {
+    Entry.find().populate('user')
+        .then((entries) => {
+            res.send(entries);
+        })
+        .catch(next);
+});
 
 // Create Entry
 router.post("/", verifyUser, (req, res, next) => {
@@ -50,4 +59,12 @@ router.get("/:id", verifyUser, (req, res, next) => {
         .catch(next);
 });
 
+// Get All Users Entries
+router.get("/", verifyUser, (req, res, next) => {
+    Entry.find({ user: req.user })
+        .then((entries) => {
+            res.send(entries);
+        })
+        .catch(next);
+});
 module.exports = router;

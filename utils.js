@@ -30,9 +30,11 @@ module.exports.verifyUser = (req, res, next) => {
 };
 
 module.exports.verifyAdmin = (req, res, next) => {
-    if (!req.user.isAdmin) {
-        throw { message: "Unauthorized" };
-    } else {
-        next();
-    }
+    this.verifyUser(req, res, () => {
+        if (!req.user.isAdmin) {
+            throw { message: "Unauthorized" };
+        } else {
+            next();
+        }
+    })
 };
